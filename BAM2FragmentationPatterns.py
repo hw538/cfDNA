@@ -56,6 +56,10 @@ outchrom = None
 options.region = options.region.strip("""\'""").strip()
 if options.region.upper() == "ALL": options.region = ""
 
+"""
+Get the start and end , as well as chr information 
+"""
+
 if len(options.region) != 0:
   try:
     chrom = options.region.split(':')[0]
@@ -109,7 +113,9 @@ for bamfile in args:
         outchrom = outchrom.replace("chr","")
       except:
         continue
-    
+"""
+explanation of F and R : https://www.cureffi.org/2012/12/19/forward-and-reverse-reads-in-paired-end-sequencing/
+"""
     posList = []
     if alignment.is_paired:
       if alignment.mate_is_unmapped: continue
